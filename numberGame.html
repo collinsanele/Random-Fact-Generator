@@ -1,0 +1,103 @@
+<html>
+<head>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Tangerine'>
+<title>Numbers API </title>
+<style>
+  body {
+    text-align:center;
+    background-color: black;
+    font-family:'Tangerine';
+    }
+  h3 {
+    font-size:25px;
+    padding-top:15px;
+    padding-left:0px;
+    color:gold;
+    }
+    
+  #content {
+    margin:0 auto;
+    width:90%;
+    height:35%;
+    border-radius:10px;
+    background-color:steelblue;
+    }
+    
+  #result {
+    margin:0 auto;
+    width:90%;
+    height:40%;
+    border-radius:10px;
+    background-color:aqua;
+    margin-top:6px;
+    text-align: center;
+    padding-top:78px;
+    padding-left:5px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:5px;
+    display:none;
+    font-size:39px;
+    }
+    
+  input {
+    width:80%;
+    height:30%;
+    border-radius:15px;
+    outline:none;
+    padding:5px;
+    }
+    
+ </style>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id='content'>
+<h3>Collins Number Game </h3>
+<input type='number' placeholder='Enter any number here' id='in'></input>
+</div>
+<div id='result'></div>
+
+
+<script src="js/bootstrap.min.js">
+</script>
+<script>
+var input = document.getElementById('in');
+var result = document.getElementById('result');
+
+input.addEventListener('input', display);
+
+function display(){
+  if (input.value){
+  result.style.display = 'block';
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function(){
+   if (this.readyState == 4 && this.status == 200) {
+   //var response = JSON.parse(this.responseText);
+    result.innerHTML = this.responseText;
+  }
+   }
+  
+   xhttp.open('GET','http://numbersapi.com/'+input.value, true);
+    xhttp.send();
+  
+  }
+   
+  else{
+    result.style.display = 'none';
+    }
+    
+  
+  
+  }
+  
+  
+
+
+
+
+
+</script>
+</body>
+</html>
